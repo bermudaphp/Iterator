@@ -1,0 +1,12 @@
+{
+    "name": "lobster-php/iterators",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lobster\\Iterators\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">= 7.2.0"
+    }
+}
