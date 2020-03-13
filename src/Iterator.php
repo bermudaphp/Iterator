@@ -39,7 +39,7 @@ class Iterator implements \Iterator {
      * @since 5.0.0
      */
     public function current() {
-        return $this->iterator->count();
+        return $this->iterator->current();
     }
 
     /**
