@@ -14,22 +14,18 @@ class ReverseIterator implements \Iterator {
      * @var array
      */
     private $data = [];
+    
+    /**
+     * @var iterable
+     */
+    private $iterabele;
 
     /**
      * ReverseIterator constructor.
      * @param iterable $iterable
      */
     public function __construct(iterable $iterable) {
-
-        if($iterable instanceof \IteratorAggregate){
-            $iterable = $iterable->getIterator();
-        }
-
-        if($iterable instanceof \Iterator){
-            $iterable = iterator_to_array($iterable);
-        }
-
-        $this->data = $iterable;
+        $this->iterable = $iterable;
     }
 
     /**
@@ -80,6 +76,24 @@ class ReverseIterator implements \Iterator {
      * @since 5.0.0
      */
     public function rewind() {
+        
+        if($this->iterbale != null){
+            
+            if($this->iterable instanceof \IteratorAggregate){
+                $this->data = $this->iterable->getIterator();
+            }
+            
+            elseif($this->iterable instanceof \Iterator){
+                $this->data = iterator_to_array($this->iterable);
+            }
+            
+            else {
+                $this->data = $this->iterable;
+            }
+            
+            $this->iterable = null;
+        }
+         
         end($this->data);
     }
 }
