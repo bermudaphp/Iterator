@@ -80,7 +80,7 @@ class ReverseIterator implements \Iterator {
         if($this->iterbale != null){
             
             if($this->iterable instanceof \IteratorAggregate){
-                $this->data = $this->iterable->getIterator();
+                $this->data = iterator_to_array($this->iterable->getIterator());
             }
             
             elseif($this->iterable instanceof \Iterator){
