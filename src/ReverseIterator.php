@@ -1,30 +1,20 @@
 <?php
 
 
-namespace Lobster\Iterators;
+namespace Bermuda\Iterator;
 
 
 /**
  * Class ReverseIterator
- * @package Lobster\Iterators
+ * @package Bermuda\Iterator
  */
-class ReverseIterator implements \Iterator {
+class ReverseIterator implements \Iterator
+{
+    private array $data = [];
+    private iterable $iterabele;
 
-    /**
-     * @var array
-     */
-    private $data = [];
-    
-    /**
-     * @var iterable
-     */
-    private $iterabele;
-
-    /**
-     * ReverseIterator constructor.
-     * @param iterable $iterable
-     */
-    public function __construct(iterable $iterable) {
+    public function __construct(iterable $iterable)
+    {
         $this->iterable = $iterable;
     }
 
@@ -34,7 +24,8 @@ class ReverseIterator implements \Iterator {
      * @return mixed Can return any type.
      * @since 5.0.0
      */
-    public function current() {
+    public function current()
+    {
         return current($this->data);
     }
 
@@ -44,7 +35,8 @@ class ReverseIterator implements \Iterator {
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function next() {
+    public function next()
+    {
         return prev($this->data);
     }
 
@@ -54,7 +46,8 @@ class ReverseIterator implements \Iterator {
      * @return mixed scalar on success, or null on failure.
      * @since 5.0.0
      */
-    public function key() {
+    public function key()
+    {
         return key($this->data);
     }
 
@@ -65,7 +58,8 @@ class ReverseIterator implements \Iterator {
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
-    public function valid() {
+    public function valid() 
+    {
         return ($key = $this->key()) !== null && $key !== false;
     }
 
@@ -75,19 +69,22 @@ class ReverseIterator implements \Iterator {
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function rewind() {
-        
-        if($this->iterbale != null){
-            
-            if($this->iterable instanceof \IteratorAggregate){
+    public function rewind()
+    {    
+        if($this->iterbale != null)
+        {    
+            if($this->iterable instanceof \IteratorAggregate)
+            {
                 $this->data = iterator_to_array($this->iterable->getIterator());
             }
             
-            elseif($this->iterable instanceof \Iterator){
+            elseif($this->iterable instanceof \Iterator)
+            {
                 $this->data = iterator_to_array($this->iterable);
             }
             
-            else {
+            else 
+            {
                 $this->data = $this->iterable;
             }
             
