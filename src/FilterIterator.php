@@ -1,15 +1,15 @@
 <?php
 
 
-namespace Lobster\Iterators;
+namespace Bermuda\Iterator;
 
 
 /**
  * Class FilterIterator
- * @package Lobster\Iterators
+ * @package Bermuda\Iterator
  */
-class FilterIterator extends Iterator {
-
+class FilterIterator extends Iterator 
+{
     /**
      * @var callable
      */
@@ -20,7 +20,8 @@ class FilterIterator extends Iterator {
      * @param iterable $data
      * @param callable $callback
      */
-    public function __construct(iterable $data, callable $callback) {
+    public function __construct(iterable $data, callable $callback)
+    {
         parent::__construct($data);
         $this->setCallback($callback);
     }
@@ -29,7 +30,8 @@ class FilterIterator extends Iterator {
      * @param callable $callback
      * @return FilterIterator
      */
-    public function setCallback(callable $callback) : self {
+    public function setCallback(callable $callback): self 
+    {
         $this->callback = $callback;
         return $this;
     }
@@ -37,25 +39,28 @@ class FilterIterator extends Iterator {
     /**
      * @return callable
      */
-    public function getCallback() : callable {
+    public function getCallback() : callable
+    {
         return $this->callback;
     }
 
     /**
      * @return bool
      */
-    protected function accept() : bool {
+    protected function accept(): bool 
+    {
         return (bool) ($this->callback)($this->current(), $this->key());
     }
 
     /**
      * @return bool
      */
-    public function valid(): bool {
-
-        if(parent::valid()){
-
-            if($this->accept()){
+    public function valid(): bool 
+    {
+        if(parent::valid())
+        {
+            if($this->accept())
+            {
                 return true;
             }
 
