@@ -1,26 +1,22 @@
 <?php
 
 
-namespace Lobster\Iterators;
+namespace Bermuda\Iterator;
 
 
 /**
  * Class CallbackIterator
- * @package Lobster\Iterators
+ * @package Bermuda\Iterator
  */
-class CallbackIterator extends Iterator {
-
+class CallbackIterator extends Iterator 
+{
     /**
      * @var callable
      */
     private $callback;
 
-    /**
-     * CallbackIterator constructor.
-     * @param iterable $iterable
-     * @param callable $callback
-     */
-    public function __construct(iterable $iterable, callable $callback) {
+    public function __construct(iterable $iterable, callable $callback)
+    {
         parent::__construct($iterable);
         $this->callback = $callback;
     }
@@ -28,14 +24,16 @@ class CallbackIterator extends Iterator {
     /**
      * @return callable
      */
-    public function getCallback(): callable {
+    public function getCallback(): callable 
+    {
         return $this->callback;
     }
 
     /**
      * @return mixed
      */
-    public function current() {
+    public function current()
+    {
         return ($this->callback)(parent::current());
     }
 }
