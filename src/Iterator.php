@@ -1,31 +1,26 @@
 <?php
 
 
-namespace Lobster\Iterators;
+namespace Bermuda\Iterator;
 
 
 /**
  * Class Iterator
- * @package Lobster\Iterators
+ * @package Bermuda\Iterator
  */
-class Iterator implements \Iterator {
+class Iterator implements \Iterator 
+{
+    private \Iterator $iterator;
 
-    /**
-     * @var \Iterator
-     */
-    private $iterator;
-
-    /**
-     * Iterator constructor.
-     * @param iterable $iterable
-     */
-    public function __construct(iterable $iterable) {
-
-        if(is_array($iterable)){
+    public function __construct(iterable $iterable)
+    {
+        if(is_array($iterable))
+        {
             $iterable = new \ArrayIterator($iterable);
         }
 
-        elseif($iterable instanceof \IteratorAggregate){
+        elseif($iterable instanceof \IteratorAggregate)
+        {
             $iterable = $iterable->getIterator();
         }
 
@@ -38,7 +33,8 @@ class Iterator implements \Iterator {
      * @return mixed Can return any type.
      * @since 5.0.0
      */
-    public function current() {
+    public function current()
+    {
         return $this->iterator->current();
     }
 
@@ -48,7 +44,8 @@ class Iterator implements \Iterator {
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function next() {
+    public function next()
+    {
         return $this->iterator->next();
     }
 
@@ -58,7 +55,8 @@ class Iterator implements \Iterator {
      * @return mixed scalar on success, or null on failure.
      * @since 5.0.0
      */
-    public function key() {
+    public function key()
+    {
         return $this->iterator->key();
     }
 
@@ -69,7 +67,8 @@ class Iterator implements \Iterator {
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
-    public function valid() {
+    public function valid()
+    {
         return $this->iterator->valid();
     }
 
@@ -79,7 +78,8 @@ class Iterator implements \Iterator {
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function rewind() {
+    public function rewind()
+    {
         $this->iterator->rewind();
     }
 }
