@@ -1,36 +1,21 @@
 <?php
 
 
-namespace Lobster\Iterators;
+namespace Bermuda\Iterator;
 
 
 /**
  * Class StringIterator
- * @package Lobster\Iterators
+ * @package Bermuda\Iterator
  */
-class StringIterator implements \Iterator {
-
-    /**
-     * @var string
-     */
-    private $string;
-
-    /**
-     * @var int
-     */
-    private $len;
-
-    /**
-     * @var int
-     */
-    private $pos = 0;
-
-
-    /**
-     * StringIterator constructor.
-     * @param string $string
-     */
-    public function __construct(string $string) {
+class StringIterator implements \Iterator
+{
+    private int $len;
+    private int $pos = 0;
+    private string $string;
+    
+    public function __construct(string $string) 
+    {
         $this->string = $string;
         $this->len = mb_strlen($string);
     }
@@ -41,7 +26,8 @@ class StringIterator implements \Iterator {
      * @return mixed Can return any type.
      * @since 5.0.0
      */
-    public function current() {
+    public function current() 
+    {
         return $this->string[$this->pos];
     }
 
@@ -51,7 +37,8 @@ class StringIterator implements \Iterator {
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function next() {
+    public function next() 
+    {
         $this->pos++;
     }
 
@@ -61,7 +48,8 @@ class StringIterator implements \Iterator {
      * @return mixed scalar on success, or null on failure.
      * @since 5.0.0
      */
-    public function key() {
+    public function key()
+    {
         return $this->pos;
     }
 
@@ -72,7 +60,8 @@ class StringIterator implements \Iterator {
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
-    public function valid() {
+    public function valid() 
+    {
         return $this->pos <= $this->len;
     }
 
@@ -82,7 +71,8 @@ class StringIterator implements \Iterator {
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function rewind() {
+    public function rewind() 
+    {
         $this->pos = 0;
     }
 }
