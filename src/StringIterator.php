@@ -62,7 +62,7 @@ class StringIterator implements \Iterator
      */
     public function valid() 
     {
-        return $this->pos <= $this->len;
+        return $this->pos < $this->len;
     }
 
     /**
