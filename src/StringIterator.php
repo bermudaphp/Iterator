@@ -4,12 +4,17 @@
 namespace Bermuda\Iterator;
 
 
+use Bermuda\Arrayable;
+
+
 /**
  * Class StringIterator
  * @package Bermuda\Iterator
  */
-class StringIterator implements \Iterator
+class StringIterator implements \Iterator, Arrayable
 {
+    use IteratorToArray;
+    
     private int $len;
     private int $pos = 0;
     private string $string;
