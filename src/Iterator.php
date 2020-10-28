@@ -4,22 +4,27 @@
 namespace Bermuda\Iterator;
 
 
+use Bermuda\Arrayable;
+
+
 /**
  * Class Iterator
  * @package Bermuda\Iterator
  */
-class Iterator implements \Iterator 
+class Iterator implements \Iterator, Arrayable 
 {
+    use IteratorToArray;
+        
     private \Iterator $iterator;
 
     public function __construct(iterable $iterable)
     {
-        if(is_array($iterable))
+        if (is_array($iterable))
         {
             $iterable = new \ArrayIterator($iterable);
         }
 
-        elseif($iterable instanceof \IteratorAggregate)
+        elseif ($iterable instanceof \IteratorAggregate)
         {
             $iterable = $iterable->getIterator();
         }
