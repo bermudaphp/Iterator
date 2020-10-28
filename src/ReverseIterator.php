@@ -4,14 +4,19 @@
 namespace Bermuda\Iterator;
 
 
+use Bermuda\Arrayable;
+
+
 /**
  * Class ReverseIterator
  * @package Bermuda\Iterator
  */
-class ReverseIterator implements \Iterator
+class ReverseIterator implements \Iterator, Arrayable
 {
+    use IteratorToArray;
+    
     private array $data = [];
-    private iterable $iterabele;
+    private ?iterable $iterabele = null;
 
     public function __construct(iterable $iterable)
     {
@@ -71,14 +76,14 @@ class ReverseIterator implements \Iterator
      */
     public function rewind()
     {    
-        if($this->iterbale != null)
+        if ($this->iterbale != null)
         {    
-            if($this->iterable instanceof \IteratorAggregate)
+            if ($this->iterable instanceof \IteratorAggregate)
             {
                 $this->data = iterator_to_array($this->iterable->getIterator());
             }
             
-            elseif($this->iterable instanceof \Iterator)
+            elseif ($this->iterable instanceof \Iterator)
             {
                 $this->data = iterator_to_array($this->iterable);
             }
