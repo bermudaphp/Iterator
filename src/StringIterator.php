@@ -24,6 +24,14 @@ class StringIterator implements \Iterator, Arrayable
         $this->string = $string;
         $this->len = mb_strlen($string);
     }
+    
+    /**
+     * @return string
+     */
+    public function getString(): string
+    {
+        return $this->string;
+    }
 
     /**
      * Return the current element
