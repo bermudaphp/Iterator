@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bermuda\Iterator;
-
 
 /**
  * Class CallbackIterator
