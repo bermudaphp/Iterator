@@ -26,7 +26,7 @@ class Iterator implements \Iterator, Arrayable
             $iterable = $iterable->getIterator();
         }
 
-        $this->iterator = $iterable;
+        $this->iterator = clone $iterable;
     }
 
     /**
