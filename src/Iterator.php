@@ -1,11 +1,8 @@
 <?php
 
-
 namespace Bermuda\Iterator;
 
-
 use Bermuda\Arrayable;
-
 
 /**
  * Class Iterator
