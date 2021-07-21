@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Bermuda\Iterator;
-
 
 /**
  * Class FilterIterator
@@ -39,7 +37,7 @@ class FilterIterator extends Iterator
     /**
      * @return callable
      */
-    public function getCallback() : callable
+    public function getCallback(): callable
     {
         return $this->callback;
     }
@@ -57,9 +55,9 @@ class FilterIterator extends Iterator
      */
     public function valid(): bool 
     {
-        if(parent::valid())
+        if (parent::valid())
         {
-            if($this->accept())
+            if ($this->accept())
             {
                 return true;
             }
