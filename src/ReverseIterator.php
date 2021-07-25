@@ -75,21 +75,7 @@ class ReverseIterator implements \Iterator, Arrayable
     {    
         if ($this->iterable != null)
         {    
-            if ($this->iterable instanceof \IteratorAggregate)
-            {
-                $this->data = iterator_to_array($this->iterable->getIterator());
-            }
-            
-            elseif ($this->iterable instanceof \Iterator)
-            {
-                $this->data = iterator_to_array($this->iterable);
-            }
-            
-            else 
-            {
-                $this->data = $this->iterable;
-            }
-            
+            $this->iterable = iterableToArray($this->iterable);
             $this->iterable = null;
         }
          
