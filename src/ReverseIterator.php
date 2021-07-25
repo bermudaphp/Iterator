@@ -13,7 +13,7 @@ class ReverseIterator implements \Iterator, Arrayable
     use IteratorToArray;
     
     private array $data = [];
-    private ?iterable $iterabele = null;
+    private ?iterable $iterable = null;
 
     public function __construct(iterable $iterable)
     {
@@ -73,7 +73,7 @@ class ReverseIterator implements \Iterator, Arrayable
      */
     public function rewind()
     {    
-        if ($this->iterbale != null)
+        if ($this->iterable != null)
         {    
             if ($this->iterable instanceof \IteratorAggregate)
             {
