@@ -32,6 +32,6 @@ class CallbackIterator extends Iterator
      */
     public function current()
     {
-        return ($this->callback)(parent::current());
+        return ($this->callback)(parent::current(), $this->key());
     }
 }
