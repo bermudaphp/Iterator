@@ -57,7 +57,7 @@ final class StreamIterator implements \Iterator, Stringable
     public function withStream(StreamInterface $stream): self
     {
         $copy = clone $this;
-        $this->stream = $stream;
+        $copy->stream = $stream;
 
         return $copy;
     }
