@@ -16,6 +16,11 @@ final class StreamIterator implements \Iterator, Stringable
 
     public function __construct(StreamInterface $stream, int $bytesPerIteration = 1024)
     {
+        if (!$this->stream->isReadable())
+        {
+            throw new \RuntimeException('Stream is not readable');
+        }
+        
         $this->stream = $stream;
         $this->bytesPerIteration = $bytesPerIteration;
     }
@@ -59,11 +64,6 @@ final class StreamIterator implements \Iterator, Stringable
 
     public function rewind()
     {
-        if (!$this->stream->isReadable())
-        {
-            throw new \RuntimeException('Stream is not readable');
-        }
-
         $this->stream->rewind();
     }
 }
