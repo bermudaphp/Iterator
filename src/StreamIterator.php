@@ -16,13 +16,12 @@ final class StreamIterator implements \Iterator, Stringable
 
     public function __construct(StreamInterface $stream, int $bytesPerIteration = 1024)
     {
-        if (!$this->stream->isReadable())
+        if (!$stream->isReadable())
         {
             throw new \RuntimeException('Stream is not readable');
         }
         
-        $this->stream = $stream;
-        $this->bytesPerIteration = $bytesPerIteration;
+        $this->setBytes($bytesPerIteration)->stream = $stream;
     }
 
     /**
@@ -31,6 +30,16 @@ final class StreamIterator implements \Iterator, Stringable
     public function __toString(): string
     {
         return $this->stream->getContents();
+    }
+    
+    /**
+     * @param int $bytes
+     * @return StreamIterator
+     */
+    public function setBytes(int $bytes): self
+    {
+        $this->bytesPerIteration = $bytes;
+        return $this;
     }
 
     /**
