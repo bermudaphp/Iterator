@@ -27,7 +27,7 @@ final class StreamIterator implements \Iterator, Stringable
 
     public function getStream(): StreamInterface
     {
-        return clone $this->stream;
+        return $this->stream;
     }
 
     public function withStream(StreamInterface $stream): self
