@@ -25,16 +25,26 @@ final class StreamIterator implements \Iterator, Stringable
         $this->bytesPerIteration = $bytesPerIteration;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function __toString(): string
     {
         return $this->stream->getContents();
     }
 
+    /**
+     * @return StreamInterface
+     */
     public function getStream(): StreamInterface
     {
         return $this->stream;
     }
 
+    /**
+     * @param StreamInterface $stream
+     * @return StreamIterator
+     */
     public function withStream(StreamInterface $stream): self
     {
         $copy = clone $this;
@@ -43,25 +53,38 @@ final class StreamIterator implements \Iterator, Stringable
         return $copy;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function current()
     {
         return $this->stream->read($this->bytesPerIteration);
     }
 
-    public function next(): void
-    {
-    }
+    /**
+     * @inheritDoc
+     */
+    public function next(): void {}
 
+    /**
+     * @inheritDoc
+     */
     public function key(): int
     {
         return $this->stream->tell();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function valid(): bool
     {
         return $this->stream->eof() !== true;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function rewind()
     {
         $this->stream->rewind();
