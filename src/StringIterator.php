@@ -8,18 +8,24 @@ use Bermuda\Arrayable;
  * Class StringIterator
  * @package Bermuda\Iterator
  */
-class StringIterator implements \Iterator, Arrayable
+final class StringIterator implements \Iterator, Arrayable, \Stringable
 {
     use IteratorToArray;
+   
+    private string $subject;
+    private int $stringLength;
     
-    private int $len;
-    private int $pos = 0;
-    private string $string;
+    private int $position = 0;
     
-    public function __construct(string $string) 
+    public function __construct(string $subject) 
     {
-        $this->string = $string;
-        $this->len = mb_strlen($string);
+        $this->subject = $subject;
+        $this->stringLength = mb_strlen($string);
+    }
+    
+    public function __toString(): string
+    {
+        return $this->getString();
     }
     
     /**
@@ -27,7 +33,7 @@ class StringIterator implements \Iterator, Arrayable
      */
     public function getString(): string
     {
-        return $this->string;
+        return $this->subject;
     }
 
     /**
@@ -38,7 +44,7 @@ class StringIterator implements \Iterator, Arrayable
      */
     public function current() 
     {
-        return $this->string[$this->pos];
+        return $this->subject[$this->position];
     }
 
     /**
@@ -49,7 +55,7 @@ class StringIterator implements \Iterator, Arrayable
      */
     public function next() 
     {
-        $this->pos++;
+        $this->position++;
     }
 
     /**
@@ -60,7 +66,7 @@ class StringIterator implements \Iterator, Arrayable
      */
     public function key()
     {
-        return $this->pos;
+        return $this->position;
     }
 
     /**
@@ -72,7 +78,7 @@ class StringIterator implements \Iterator, Arrayable
      */
     public function valid() 
     {
-        return $this->pos < $this->len;
+        return $this->position < $this->stringLength;
     }
 
     /**
@@ -83,6 +89,6 @@ class StringIterator implements \Iterator, Arrayable
      */
     public function rewind() 
     {
-        $this->pos = 0;
+        $this->position = 0;
     }
 }
