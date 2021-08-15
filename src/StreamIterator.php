@@ -41,6 +41,14 @@ final class StreamIterator implements \Iterator, Stringable
         $this->bytesPerIteration = $bytes;
         return $this;
     }
+    
+    /**
+     * @return int
+     */
+    public function getBytes(): int
+    {
+        return $this->bytesPerIteration;
+    }
 
     /**
      * @return StreamInterface
