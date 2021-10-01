@@ -5,10 +5,6 @@ namespace Bermuda\Iterator;
 use Bermuda\String\Stringable;
 use Psr\Http\Message\StreamInterface;
 
-/**
- * Class StreamIterator
- * @package Bermuda\Iterator
- */
 final class StreamIterator implements \Iterator, Stringable
 {
     private int $bytesPerIteration;
@@ -29,7 +25,7 @@ final class StreamIterator implements \Iterator, Stringable
      */
     public function __toString(): string
     {
-        return $this->stream->getContents();
+        return $this->stream;
     }
     
     /**
