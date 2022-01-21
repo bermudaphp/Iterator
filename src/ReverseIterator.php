@@ -4,10 +4,6 @@ namespace Bermuda\Iterator;
 
 use Bermuda\Arrayable;
 
-/**
- * Class ReverseIterator
- * @package Bermuda\Iterator
- */
 class ReverseIterator implements \Iterator, Arrayable
 {
     use IteratorToArray;
@@ -26,7 +22,7 @@ class ReverseIterator implements \Iterator, Arrayable
      * @return mixed Can return any type.
      * @since 5.0.0
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->data);
     }
@@ -37,9 +33,9 @@ class ReverseIterator implements \Iterator, Arrayable
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function next()
+    public function next(): void
     {
-        return prev($this->data);
+        prev($this->data);
     }
 
     /**
@@ -48,7 +44,7 @@ class ReverseIterator implements \Iterator, Arrayable
      * @return mixed scalar on success, or null on failure.
      * @since 5.0.0
      */
-    public function key()
+    public function key(): mixed
     {
         return key($this->data);
     }
@@ -60,7 +56,7 @@ class ReverseIterator implements \Iterator, Arrayable
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
-    public function valid() 
+    public function valid(): bool 
     {
         return ($key = $this->key()) !== null && $key !== false;
     }
@@ -71,10 +67,9 @@ class ReverseIterator implements \Iterator, Arrayable
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function rewind()
+    public function rewind(): void
     {    
-        if ($this->iterable != null)
-        {    
+        if ($this->iterable != null) {    
             $this->iterable = iterableToArray($this->iterable);
             $this->iterable = null;
         }
