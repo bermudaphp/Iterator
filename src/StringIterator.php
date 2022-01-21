@@ -4,10 +4,6 @@ namespace Bermuda\Iterator;
 
 use Bermuda\Arrayable;
 
-/**
- * Class StringIterator
- * @package Bermuda\Iterator
- */
 final class StringIterator implements \Iterator, Arrayable, \Stringable
 {
     use IteratorToArray;
@@ -42,7 +38,7 @@ final class StringIterator implements \Iterator, Arrayable, \Stringable
      * @return mixed Can return any type.
      * @since 5.0.0
      */
-    public function current() 
+    public function current(): mixed 
     {
         return $this->subject[$this->position];
     }
@@ -53,7 +49,7 @@ final class StringIterator implements \Iterator, Arrayable, \Stringable
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function next() 
+    public function next(): void 
     {
         $this->position++;
     }
@@ -64,7 +60,7 @@ final class StringIterator implements \Iterator, Arrayable, \Stringable
      * @return mixed scalar on success, or null on failure.
      * @since 5.0.0
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->position;
     }
@@ -76,7 +72,7 @@ final class StringIterator implements \Iterator, Arrayable, \Stringable
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
-    public function valid() 
+    public function valid(): bool 
     {
         return $this->position < $this->stringLength;
     }
@@ -87,7 +83,7 @@ final class StringIterator implements \Iterator, Arrayable, \Stringable
      * @return void Any returned value is ignored.
      * @since 5.0.0
      */
-    public function rewind() 
+    public function rewind(): void 
     {
         $this->position = 0;
     }
