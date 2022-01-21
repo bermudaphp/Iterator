@@ -9,13 +9,7 @@ trait IteratorToArray
      */
     public function toArray(): array
     {
-        $items = [];
-        
-        foreach ($this as $i => $item)
-        {
-            $items[$i] = $item;
-        }
-        
-        return $items;
+        foreach ($this as $i => $item) $items[$i] = $item;
+        return $items ?? [];
     }
 }
