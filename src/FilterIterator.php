@@ -2,10 +2,6 @@
 
 namespace Bermuda\Iterator;
 
-/**
- * Class FilterIterator
- * @package Bermuda\Iterator
- */
 class FilterIterator extends Iterator 
 {
     /**
@@ -55,10 +51,8 @@ class FilterIterator extends Iterator
      */
     public function valid(): bool 
     {
-        if (parent::valid())
-        {
-            if ($this->accept())
-            {
+        if (parent::valid()) {
+            if ($this->accept()) {
                 return true;
             }
 
