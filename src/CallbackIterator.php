@@ -2,10 +2,6 @@
 
 namespace Bermuda\Iterator;
 
-/**
- * Class CallbackIterator
- * @package Bermuda\Iterator
- */
 class CallbackIterator extends Iterator 
 {
     /**
