@@ -40,7 +40,7 @@ class Iterator implements \Iterator, Arrayable
      */
     public function next(): void
     {
-        return $this->iterator->next();
+        $this->iterator->next();
     }
 
     /**
