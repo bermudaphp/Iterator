@@ -1,6 +1,6 @@
 <?php
 
-namespace Bermuda\Iterator;
+namespace Bermuda\Stdlib;
 
 use Bermuda\String\Stringable;
 use Psr\Http\Message\StreamInterface;
