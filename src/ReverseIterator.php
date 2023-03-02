@@ -1,8 +1,6 @@
 <?php
 
-namespace Bermuda\Iterator;
-
-use Bermuda\Arrayable;
+namespace Bermuda\Stdlib;
 
 class ReverseIterator implements \Iterator, Arrayable
 {
@@ -70,7 +68,7 @@ class ReverseIterator implements \Iterator, Arrayable
     public function rewind(): void
     {    
         if ($this->iterable != null) {    
-            $this->iterable = iterableToArray($this->iterable);
+            $this->iterable = to_array($this->iterable);
             $this->iterable = null;
         }
          
