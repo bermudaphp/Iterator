@@ -1,6 +1,6 @@
 <?php
 
-namespace Bermuda\Iterator;
+namespace Bermuda\Stdlib;
 
 class CallbackIterator extends Iterator 
 {
