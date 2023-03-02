@@ -1,44 +1,16 @@
 <?php
 
-namespace Bermuda\Iterator;
+namespace Bermuda\Stdlib;
 
-use Bermuda\Arrayable;
+if (!function_exists('Bermuda\Stdlib\to_array')) {
+    function to_array(iterable|object $arrayable): array
+    {
+        if ($arrayable instanceof Arrayable) return $arrayable->toArray();
+        if ($arrayable instanceof \IteratorAggregate) return \iterator_to_array($arrayable->getIterator());
+        if ($arrayable instanceof \Iterator) return \iterator_to_array($arrayable);
+        if (is_array($arrayable)) return $arrayable;
 
-function iterableToArray(iterable $iterable): array
-{
-    $data = [];
-    
-    if ($iterable instanceof \IteratorAggregate) {
-        return iteratorToArray($iterable->getIterator());
+        return \get_object_vars($arrayable);
     }
-  
-    if ($iterable instanceof Arrayable) {
-        return $iterable->toArray();
-    }
-    
-    elseif (is_array($iterable)) {
-        return $iterable;
-    }
-    
-    foreach($iterable as $k => $v) {
-        $data[$k] = $v;
-    }
-    
-    return $data;
-}
-
-function iteratorToArray(\Iterator $iterator): array
-{
-    $data = [];
-  
-    if ($iterator instanceof Arrayable) {
-        return $iterator->toArray();
-    }
-    
-    foreach($iterator as $k => $v) {
-        $data[$k] = $v;
-    }
-    
-    return $data;
 }
 
