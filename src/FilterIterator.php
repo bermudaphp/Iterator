@@ -1,6 +1,6 @@
 <?php
 
-namespace Bermuda\Iterator;
+namespace Bermuda\Stdlib;
 
 class FilterIterator extends Iterator 
 {
