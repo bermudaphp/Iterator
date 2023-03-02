@@ -8,8 +8,8 @@
         "files": ["src\\functions.php"]
     },
     "require": {
-        "php": "^7.4|^8.0|^8.1",
-        "bermudaphp/arrayable": "^1.2.2",
+        "php": "^8.0|^8.1",
+        "bermudaphp/arrayable": "^2.0",
         "psr/http-message": "^1.0.1"
     }
 }
