@@ -1,8 +1,6 @@
 <?php
 
-namespace Bermuda\Iterator;
-
-use Bermuda\Arrayable;
+namespace Bermuda\Stdlib;
 
 final class StringIterator implements \Iterator, Arrayable, \Stringable
 {
