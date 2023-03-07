@@ -2,10 +2,9 @@
 
 namespace Bermuda\Stdlib;
 
-use Bermuda\String\Stringable;
 use Psr\Http\Message\StreamInterface;
 
-final class StreamIterator implements \Iterator, Stringable
+final class StreamIterator implements \Iterator, \Stringable
 {
     private int $bytesPerIteration;
     private StreamInterface $stream;
