@@ -68,7 +68,7 @@ class ReverseIterator implements \Iterator, Arrayable
     public function rewind(): void
     {    
         if ($this->iterable != null) {    
-            $this->iterable = to_array($this->iterable);
+            $this->data = to_array($this->iterable);
             $this->iterable = null;
         }
          
