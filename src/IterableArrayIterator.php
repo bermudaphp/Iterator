@@ -1,6 +1,6 @@
 <?php
 
-namespace Bermuda\Iterator;
+namespace Bermuda\Stdlib;
 
 use ArrayIterator;
 use Countable;
@@ -15,7 +15,7 @@ use Generator;
  * Once an item is encountered, it is stored in the cache so that subsequent iterations or calls
  * (such as toArray() or count()) can use the stored values without re-traversing the original iterable.
  */
-final class IterableArrayIterator implements Iterator, Countable
+final class IterableArrayIterator implements Iterator, Countable, Arrayable
 {
     /**
      * Array cache of traversed values.
